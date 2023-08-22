@@ -52,8 +52,7 @@ export const getMe = (token) => {
     });
   };
   
-  // make a search to google albums api
-  // https://www.googleapis.com/albums/v1/volumes?q=harry+potter
+  // make a search to spotify albums api
   export const searchGoogleAlbums = (query) => {
     //THIS NEED TO CHANGE TO MUSIC API LINE 59
     return fetch(`https://www.googleapis.com/albums/v1/volumes?q=${query}`);

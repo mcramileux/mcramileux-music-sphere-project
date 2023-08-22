@@ -47,11 +47,7 @@ const LoginForm = () => {
   return (
     <>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <Alert
-          show={showAlert}
-          onClose={() => setShowAlert(false)}
-          variant='danger'
-        >
+      <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
         </Alert>
         <Form.Group className='mb-3'>
@@ -64,12 +60,14 @@ const LoginForm = () => {
             value={userFormData.email}
             required
           />
+
           <Form.Control.Feedback type='invalid'>
             Please provide a valid email.
           </Form.Control.Feedback>
         </Form.Group>
+
         <Form.Group className='mb-3'>
-          <Form.Label>Password</Form.Label>
+          <Form.Label htmlFor='password'>Password</Form.Label>
           <Form.Control
             type='password'
             placeholder='Your password'
@@ -82,6 +80,7 @@ const LoginForm = () => {
             Please provide a password.
           </Form.Control.Feedback>
         </Form.Group>
+        
         <Button
           disabled={!(userFormData.email && userFormData.password)}
           type='submit'

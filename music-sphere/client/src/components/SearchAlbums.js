@@ -35,7 +35,7 @@ const SearchAlbums = () => {
   
       try {
         const response = await fetch(
-          `https://spotify23.p.rapidapi.com/search/?q=${searchInput}`
+          // `https://spotify23.p.rapidapi.com/search/?q=${searchInput}`
         );
   
         if (!response.ok) {
@@ -88,65 +88,64 @@ const SearchAlbums = () => {
 
   return (
     <>
-      <Container>
-        <h4 className="text-center mt-3">Search for Albums!</h4>
-        <Form onSubmit={handleFormSubmit}>
-          <Row className="mb-3">
-            <Col xs={12} md={8}>
-              <Form.Control
-                type="text"
-                name="searchInput"
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-                placeholder="Search for an album"
-              />
-            </Col>
-            <Col xs={12} md={4}>
-              <Button type="submit" variant="success" className="w-100">
-                Submit Search
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-      </Container>
+      <div className="text-light bg-dark p-5">
+        <Container>
+          <h1>Search for Albums!</h1>
+          <Form onSubmit={handleFormSubmit}>
+            <Row>
+              <Col xs={12} md={8}>
+                <Form.Control
+                  name='searchInput'
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  type='text'
+                  size='lg'
+                  placeholder='Search for a album'
+                />
+              </Col>
+              <Col xs={12} md={4}>
+                <Button type='submit' variant='success' size='lg'>
+                  Submit Search
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+        </Container>
+      </div>
 
       <Container>
-        <h5 className="text-center mt-3">
+        <h2 className='pt-5'>
           {searchedAlbums.length
             ? `Viewing ${searchedAlbums.length} results:`
-            : 'Search for an album to begin'}
-        </h5>
+            : 'Search for a album to begin'}
+        </h2>
         <Row>
-          {searchedAlbums.map((album) => (
-            <Col xs={12} sm={6} md={4} key={album.albumId}>
-              <Card className="d-flex">
-                {album.image && (
-                  <Card.Img
-                    variant="top"
-                    alt={`The cover for ${album.title}`}
-                    src={album.image}
-                    height="140"
-                  />
-                )}
-                <Card.Body className="flex-fill">
-                  <Card.Title>{album.title}</Card.Title>
-                  <Card.Text>Artists: {album.artists}</Card.Text>
-                  <Card.Text>{album.description}</Card.Text>
-                  {Auth.loggedIn() && (
-                    <Button
-                      variant="info"
-                      disabled={savedAlbumIds?.includes(album.albumId)}
-                      onClick={() => handleSaveAlbum(album.albumId)}
-                    >
-                      {savedAlbumIds?.includes(album.albumId)
-                        ? 'This album has already been chosen!'
-                        : 'Favorite this Album!'}
-                    </Button>
-                  )}
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
+          {searchedAlbums.map((album) => {
+            return (
+              <Col md="4">
+                <Card key={album.albumId} border='dark'>
+                  {album.image ? (
+                    <Card.Img src={album.image} alt={`The cover for ${album.title}`} variant='top' />
+                  ) : null}
+                  <Card.Body>
+                    <Card.Title>{album.title}</Card.Title>
+                    <p className='small'>Authors: {album.authors}</p>
+                    <Card.Text>{album.description}</Card.Text>
+                    {Auth.loggedIn() && (
+                      <Button
+                        disabled={savedAlbumIds?.some((savedAlbumId) => savedAlbumId === album.albumId)}
+                        className='btn-block btn-info'
+                        onClick={() => handleSaveAlbum(album.albumId)}>
+                        {savedAlbumIds?.some((savedAlbumId) => savedAlbumId === album.albumId)
+                          ? 'This album has already been saved!'
+                          : 'Save this Album!'}
+                      </Button>
+                    )}
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
         </Row>
       </Container>
     </>

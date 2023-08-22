@@ -51,43 +51,33 @@ const SavedAlbums = () => {
     <>
       <div fluid className="text-light bg-dark p-5">
         <Container>
-          <h1 className="text-center">Your Favorite Albums!</h1>
+          <h1>Viewing saved albums!</h1>
         </Container>
       </div>
-
       <Container>
-        <h2 className="pt-5">
-          {userData.savedAlbums?.length
-            ? `Viewing ${userData.savedAlbums.length} saved ${
-                userData.savedAlbums.length === 1 ? 'album' : 'albums'
-              }:`
+        <h2 className='pt-5'>
+          {userData.savedAlbums.length
+            ? `Viewing ${userData.savedAlbums.length} saved ${userData.savedAlbums.length === 1 ? 'album' : 'albums'}:`
             : 'You have no saved albums!'}
         </h2>
-
         <Row>
-          {userData.savedAlbums.map((album) => (
-            <Col xs={12} sm={6} md={4} key={album.albumId}>
-              <Card>
-                {album.image && (
-                  <Card.Img
-                    variant="top"
-                    src={album.image}
-                    alt={`The cover for ${album.title}`}
-                  />
-                )}
-                <Card.Body>
-                  <Card.Text>Authors: {album.authors}</Card.Text>
-                  <Card.Text>{album.description}</Card.Text>
-                  <Button
-                    variant="danger"
-                    onClick={() => handleDeleteAlbum(album.albumId)}
-                  >
-                    Delete this Album!
-                  </Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
+          {userData.savedAlbums.map((album) => {
+            return (
+              <Col md="4">
+                <Card key={album.albumId} border='dark'>
+                  {album.image ? <Card.Img src={album.image} alt={`The cover for ${album.title}`} variant='top' /> : null}
+                  <Card.Body>
+                    <Card.Title>{album.title}</Card.Title>
+                    <p className='small'>Artists: {album.artists}</p>
+                    <Card.Text>{album.description}</Card.Text>
+                    <Button className='btn-block btn-danger' onClick={() => handleDeleteAlbum(album.albumId)}>
+                      Delete this Album!
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
         </Row>
       </Container>
     </>

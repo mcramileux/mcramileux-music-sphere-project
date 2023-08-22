@@ -2,10 +2,10 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { AiFillGithub, AiFillLinkedin, AiFillTwitterCircle } from 'react-icons/ai';
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className='bg-dark text-info'>
-      <Container className='text-center'>
+    <footer className='footer mt-auto py-3 bg-dark text-info'>
+      <Container className='container-footer text-center'>
         <Row>
           <Col>
             <div className='social-icons'>
@@ -34,11 +34,12 @@ export default function Footer() {
                 <AiFillTwitterCircle />
               </a>
             </div>
-            <section>
+            <section className='footer'>
+              
               <p>
-                <h6 className='copyright-text'>
+                <h5 className='copyright-text'>
                   &copy; 2023 mcramileux. All rights reserved.
-                </h6>
+                </h5>
               </p>
             </section>
           </Col>
@@ -46,4 +47,6 @@ export default function Footer() {
       </Container>
     </footer>
   );
-}
+};
+
+export default Footer;

@@ -47,11 +47,11 @@ export default function Contact() {
           <Row className="gx-4 gx-lg-5 justify-content-center mx-auto">
             <Col lg={8} xl={6} className="text-center">
               <h1 className="mb-4">Contact Me</h1>
-              <p className="text-muted mb-5">
+              {/* <p className="text-muted mb-5">
                 Do you want to collaborate with me? Please do not hesitate to
                 contact me directly. I will come back to you within a matter of
                 hours to help you.
-              </p>
+              </p> */}
 
               <ul className="text-muted mb-5">
                 <li>📧 mcramileux@gmail.com</li>

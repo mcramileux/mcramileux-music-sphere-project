@@ -9,10 +9,15 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import SearchAlbums from './pages/SearchAlbums';
-import SavedAlbums from './pages/SavedAlbums';
-// import UserProfile from './pages/UserProfile';
-import Navbar from './components/NavBar';
+import Home from './pages/Home';
+import SignupForm from './pages/SignupForm';
+import LoginForm from './pages/LoginForm';
+// import SingleThought from './pages/SingleThought';
+import SavedAlbums from './components/SavedAlbums';
+import SearchAlbums from './components/SearchAlbums';
+import MyProfile from './pages/MyProfile';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -39,56 +44,58 @@ const client = new ApolloClient({
 });
 
 function App() {
-  return (
-    <ApolloProvider client={client}>
-      <Router>
-        <>
-          <Navbar />
-          <Routes>
-            <Route
-              path='/'
-              element={<SearchAlbums />}
-            />
-            <Route
-              path='/saved'
-              element={<SavedAlbums />}
-            />
-            <Route
+    return (
+      <ApolloProvider client={client}>
+        <Router>
+          <div className="flex-column justify-flex-start min-100-vh">
+            <Header />
+            <div className="container">
+              <Routes>
+                <Route 
+                  path="/"
+                  element={<Home />}
+                />
+                <Route 
+                  path="/login" 
+                  element={<LoginForm />}
+                />
+                <Route 
+                  path="/signup" 
+                  element={<SignupForm />}
+                />
+                <Route 
+                  path="/me" 
+                  element={<MyProfile />}
+                />
+                <Route 
+                  path="/profiles/:username" 
+                  element={<MyProfile />}
+                />
+                {/* <Route 
+                  path="/thoughts/:thoughtId" 
+                  element={<SingleThought />}
+                />
+              </Routes> */}
+              <Route 
+                  path="/" 
+                  element={<SearchAlbums />}
+                />
+              </Routes>
+              <Route 
+                  path="/saved" 
+                  element={<SavedAlbums />}
+                />
+              {/* <Route
               path='*'
               element={<h1 className='display-2'>Wrong page!</h1>}
             />
-          </Routes>
-        </>
-      </Router>
-    </ApolloProvider>
-  );
-}
-
+          </Routes> */}
+            </div>
+            <Footer />
+          </div>
+        </Router>
+      </ApolloProvider>
+    );
+  }
+  
 export default App;
-
-
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
