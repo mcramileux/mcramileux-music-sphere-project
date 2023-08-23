@@ -1,5 +1,4 @@
-//Do not touch nor change - for the mean time, might change something in the token
-
+//Do not touch nor change - ALL GOOD
 import decode from 'jwt-decode';
 
 class AuthService {

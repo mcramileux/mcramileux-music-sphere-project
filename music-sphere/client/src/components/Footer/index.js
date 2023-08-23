@@ -1,3 +1,4 @@
+// all good - for the mean time
 import React from 'react';
 // import { useLocation, useNavigate } from 'react-router-dom';
 import { AiFillGithub, AiFillLinkedin, AiFillTwitterCircle } from 'react-icons/ai';
@@ -25,11 +26,11 @@ const Footer = () => {
             </a>
           </div>
             <section className='footer'>
-              <p>
-                <h5 className='copyright-text'>
+              <h5 className='copyright-text'>
+                <p>
                   &copy; 2023 mcramileux. All rights reserved.               
-                </h5>
-              </p>
+                </p>
+              </h5>
             </section>   
         </div>
     </footer>

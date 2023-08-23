@@ -1,4 +1,4 @@
-//TO EDIT TO IN LINE WITH THE APP; TOOK IT FROM STATE ACTIVITY 
+//all good except line 10 - change to savedAlbumID or sumthn
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';

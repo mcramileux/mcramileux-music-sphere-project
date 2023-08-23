@@ -13,7 +13,7 @@ const albumSchema = new Schema({
     type: String,
     required: true,
   },
-  // favorite album id from Spotify - Rapid API
+  //Deezer
   albumId: {
     type: String,
     required: true,
