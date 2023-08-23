@@ -1,4 +1,5 @@
-//to edit - took from the state activity
+//all good - do not change
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -16,7 +17,7 @@ const Header = () => {
           <Link className="text-light" to="/">
             <h1 className="m-0">MusicSphere</h1>
           </Link>
-          <p className="m-0">Album Fondness & Feedback</p>
+          <p className="m-0">Save your favorite albums.</p>
         </div>
         <div>
           {Auth.loggedIn() ? (

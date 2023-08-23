@@ -10,12 +10,12 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
-import SignupForm from './pages/SignupForm';
-import LoginForm from './pages/LoginForm';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 // import SingleThought from './pages/SingleThought';
 import SavedAlbums from './components/SavedAlbums';
 import SearchAlbums from './components/SearchAlbums';
-import MyProfile from './pages/MyProfile';
+import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -44,58 +44,44 @@ const client = new ApolloClient({
 });
 
 function App() {
-    return (
-      <ApolloProvider client={client}>
-        <Router>
-          <div className="flex-column justify-flex-start min-100-vh">
-            <Header />
-            <div className="container">
-              <Routes>
-                <Route 
-                  path="/"
-                  element={<Home />}
-                />
-                <Route 
-                  path="/login" 
-                  element={<LoginForm />}
-                />
-                <Route 
-                  path="/signup" 
-                  element={<SignupForm />}
-                />
-                <Route 
-                  path="/me" 
-                  element={<MyProfile />}
-                />
-                <Route 
-                  path="/profiles/:username" 
-                  element={<MyProfile />}
-                />
-                {/* <Route 
-                  path="/thoughts/:thoughtId" 
-                  element={<SingleThought />}
-                />
-              </Routes> */}
+  return (
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
+          <div className="container">
+            <Routes>
               <Route 
-                  path="/" 
-                  element={<SearchAlbums />}
-                />
-              </Routes>
+                path="/"
+                element={<Home />}
+              />
               <Route 
-                  path="/saved" 
-                  element={<SavedAlbums />}
-                />
-              {/* <Route
-              path='*'
-              element={<h1 className='display-2'>Wrong page!</h1>}
-            />
-          </Routes> */}
-            </div>
-            <Footer />
+                path="/login" 
+                element={<Login />}
+              />
+              <Route 
+                path="/signup" 
+                element={<Signup />}
+              />
+              <Route 
+                path="/me" 
+                element={<Profile />}
+              />
+              <Route 
+                path="/profiles/:username" 
+                element={<Profile />}
+              />
+              {/* <Route 
+                path="/thoughts/:thoughtId" 
+                element={<SingleThought />}
+              /> */}
+            </Routes>
           </div>
-        </Router>
-      </ApolloProvider>
-    );
-  }
-  
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
+  );
+}
+
 export default App;

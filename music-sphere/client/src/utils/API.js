@@ -1,5 +1,4 @@
-//WILL FIX FOR THE RAPID API
-
+// NEED TO TEST DEEZER API
 // route to get logged in user's info (needs the token)
 export const getMe = (token) => {
     return fetch('/api/users/me', {
@@ -53,7 +52,7 @@ export const getMe = (token) => {
   };
   
   // make a search to spotify albums api
-  export const searchGoogleAlbums = (query) => {
-    //THIS NEED TO CHANGE TO MUSIC API LINE 59
-    return fetch(`https://www.googleapis.com/albums/v1/volumes?q=${query}`);
+  export const searchDeezerAlbums = (query) => {
+    // return fetch(`https://www.googleapis.com/albums/v1/volumes?q=${query}`);
+    return fetch(`https://api.deezer.com/search?q=${query}`);
   };
