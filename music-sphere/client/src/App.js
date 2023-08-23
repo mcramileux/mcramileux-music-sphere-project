@@ -1,4 +1,5 @@
-//WILL EDIT // THIS IS THE APP THAT WILL LOAD TO THE WEB
+//WILL EDIT 
+// THIS IS THE APP THAT WILL LOAD TO THE WEB
 
 import React from 'react';
 import {
