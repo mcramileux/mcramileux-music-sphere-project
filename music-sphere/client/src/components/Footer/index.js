@@ -7,7 +7,7 @@ const Footer = () => {
   // const location = useLocation();
   // const navigate = useNavigate();
   return (
-    <footer className="w-100 mt-auto bg-secondary p-4">
+    <footer className="w-100 mt-auto bg-dark text-light p-4">
       <div className="container text-center mb-5">
         <div className='social-icons'>
             <a href='https://github.com/mcramileux/' target='_blank'className='text-info'

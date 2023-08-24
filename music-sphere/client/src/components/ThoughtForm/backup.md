@@ -1,8 +1,6 @@
 //WILL EDIT
 
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
-
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
@@ -37,8 +35,6 @@ const ThoughtForm = () => {
       });
     },
   });
-  const searchInput = () => { }
-  const setSearchInput = () => { }
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -68,36 +64,14 @@ const ThoughtForm = () => {
 
   return (
     <div>
-
-      <Container>
-        <h1>Search for Albums!</h1>
-        <Form onSubmit={handleFormSubmit}>
-          <Row>
-            <Col xs={12} md={8}>
-              <Form.Control
-                name='searchInput'
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-                type='text'
-                size='lg'
-                placeholder='Search for a album'
-              />
-            </Col>
-            <Col xs={12} md={4}>
-              <Button type='submit' variant='success' size='lg'>
-                Search
-              </Button>
-            </Col>
-          </Row>
-        </Form>
-      </Container>
-
+      <h3>What's on your techy mind?</h3>
 
       {Auth.loggedIn() ? (
         <>
           <p
-            className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
-              }`}
+            className={`m-0 ${
+              characterCount === 280 || error ? 'text-danger' : ''
+            }`}
           >
             Character Count: {characterCount}/280
           </p>
@@ -129,8 +103,8 @@ const ThoughtForm = () => {
           </form>
         </>
       ) : (
-        <p className="text-center">
-          You need to be logged in to search for your albums. Please{' '}
+        <p>
+          You need to be logged in to share your thoughts. Please{' '}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}

@@ -25,6 +25,7 @@ const Signup = () => {
   };
 
   const handleFormSubmit = async (event) => {
+
     event.preventDefault();
     console.log(formState);
 
@@ -33,7 +34,7 @@ const Signup = () => {
         variables: { ...formState },
       });
 
-      Auth.login(data.addUser.token);
+      // Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
