@@ -58,23 +58,23 @@ export const ADD_COMMENT = gql`
 `;
 
 // FOR ALBUM WILL FIX - INCLUDE THE REMOVE ALBUM BELOW
-// export const SAVE_ALBUM = gql`
-//   mutation saveAlbum($albumData: AlbumInput!) {
-//     saveAlbum(albumData: $albumData) {
-//       _id
-//       username
-//       email
-//       savedAlbums {
-//         albumId
-//         authors
-//         image
-//         description
-//         title
-//         link
-//       }
-//     }
-//   }
-// `;
+export const SAVE_ALBUM = gql`
+  mutation saveAlbum($albumData: AlbumInput!) {
+    saveAlbum(albumData: $albumData) {
+      _id
+      username
+      email
+      savedAlbums {
+        albumId
+        authors
+        image
+        description
+        title
+        link
+      }
+    }
+  }
+`;
 
 // export const REMOVE_ALBUM = gql`
 //   mutation removeAlbum($albumId: String!) {

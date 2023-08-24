@@ -1,4 +1,4 @@
-// //all good -DO NOT CHANGE
+//all good -DO NOT CHANGE
 import React from 'react';
 
 const CommentList = ({ comments = [] }) => {
