@@ -26,36 +26,6 @@ export const ADD_USER = gql`
     }
   }
 `;
-export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-      }
-    }
-  }
-`;
-
-export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
-    }
-  }
-`;
 
 // FOR ALBUM WILL FIX - INCLUDE THE REMOVE ALBUM BELOW
 export const SAVE_ALBUM = gql`
@@ -76,27 +46,44 @@ export const SAVE_ALBUM = gql`
   }
 `;
 
-// export const REMOVE_ALBUM = gql`
-//   mutation removeAlbum($albumId: String!) {
-//     removeAlbum(albumId: $albumId) {
+export const REMOVE_ALBUM = gql`
+  mutation removeAlbum($albumId: String!) {
+    removeAlbum(albumId: $albumId) {
+      _id
+      username
+      email
+      albumCount
+      savedAlbum {
+        albumId
+        authors
+        description
+        title
+        image
+        link
+      }
+    }
+  }
+`;
+
+
+// export const ADD_COMMENT = gql`
+//   mutation addComment($thoughtId: ID!, $commentText: String!) {
+//     addComment(thoughtId: $thoughtId, commentText: $commentText) {
 //       _id
-//       username
-//       email
-//       albumCount
-//       savedAlbum {
-//         albumId
-//         authors
-//         description
-//         title
-//         image
-//         link
+//       thoughtText
+//       thoughtAuthor
+//       createdAt
+//       comments {
+//         _id
+//         commentText
+//         createdAt
 //       }
 //     }
 //   }
 // `;
 
-// WILL EDIT
-//export const ADD_COMMENT = gql`
+// //WILL EDIT
+// export const ADD_COMMENT = gql`
 //   mutation addComment($commentId: ID!, $commentText: String!) {
 //     addComment(commentId: $commentId, commentText: $commentText) {
 //       _id
@@ -121,5 +108,20 @@ export const SAVE_ALBUM = gql`
 // export const DELETE_COMMENT = gql`
 //   mutation deleteComment($deleteCommentId: ID!) {
 //     deleteComment(id: $deleteCommentId)
+//   }
+// `;
+
+// export const ADD_THOUGHT = gql`
+//   mutation addThought($thoughtText: String!) {
+//     addThought(thoughtText: $thoughtText) {
+//       _id
+//       thoughtText
+//       thoughtAuthor
+//       createdAt
+//       comments {
+//         _id
+//         commentText
+//       }
+//     }
 //   }
 // `;

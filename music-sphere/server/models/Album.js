@@ -13,7 +13,7 @@ const albumSchema = new Schema({
     type: String,
     required: true,
   },
-  //Deezer
+  
   albumId: {
     type: String,
     required: true,
