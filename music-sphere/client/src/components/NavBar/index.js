@@ -2,7 +2,7 @@
 // import { Link } from 'react-router-dom';
 // import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
 
-// import SignUp from '../pages/Signup';
+// import Signup from '../pages/Signup';
 // import Login from '../pages/Login';
 
 // import Auth from '../utils/auth';

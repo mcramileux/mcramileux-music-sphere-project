@@ -12,10 +12,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Home from './pages/Home';
+// import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+// import SearchAlbums from './components/SearchAlbums';
+// import ThoughtForm from './components/ThoughtForm';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -51,10 +53,10 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-              <Route 
+              {/* <Route 
                 path="/"
                 element={<Home />}
-              />
+              /> */}
               <Route 
                 path="/login" 
                 element={<Login />}
@@ -71,7 +73,10 @@ function App() {
                 path="/profiles/:username" 
                 element={<Profile />}
               />
-
+              {/* <Route 
+                path="/search" 
+                element={<SearchAlbums />}
+              /> */}
             </Routes>
           </div>
           <Footer />

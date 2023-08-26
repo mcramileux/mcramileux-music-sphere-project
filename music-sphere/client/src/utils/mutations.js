@@ -1,5 +1,3 @@
-//TO UPDATE COMMENT PART - MIGHT INCLUDE AUTHOR AND DATE??
-
 import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
@@ -64,64 +62,3 @@ export const REMOVE_ALBUM = gql`
     }
   }
 `;
-
-
-// export const ADD_COMMENT = gql`
-//   mutation addComment($thoughtId: ID!, $commentText: String!) {
-//     addComment(thoughtId: $thoughtId, commentText: $commentText) {
-//       _id
-//       thoughtText
-//       thoughtAuthor
-//       createdAt
-//       comments {
-//         _id
-//         commentText
-//         createdAt
-//       }
-//     }
-//   }
-// `;
-
-// //WILL EDIT
-// export const ADD_COMMENT = gql`
-//   mutation addComment($commentId: ID!, $commentText: String!) {
-//     addComment(commentId: $commentId, commentText: $commentText) {
-//       _id
-//       comments {
-//         _id
-//         commentText
-//       }
-//     }
-//   }
-// `;
-// export const UPDATE_COMMENT = gql `
-// mutation updateComment($updateCommentId: ID!, $title: String, $description: String, $cost: Float, $location: String, $date: String) {
-//   updateComment(id: $updateCommentId, title: $title) {
-//     id
-//     user {
-//       id
-//       username
-//     }
-//   }
-// }`;
-
-// export const DELETE_COMMENT = gql`
-//   mutation deleteComment($deleteCommentId: ID!) {
-//     deleteComment(id: $deleteCommentId)
-//   }
-// `;
-
-// export const ADD_THOUGHT = gql`
-//   mutation addThought($thoughtText: String!) {
-//     addThought(thoughtText: $thoughtText) {
-//       _id
-//       thoughtText
-//       thoughtAuthor
-//       createdAt
-//       comments {
-//         _id
-//         commentText
-//       }
-//     }
-//   }
-// `;

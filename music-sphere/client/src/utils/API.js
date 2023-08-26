@@ -1,4 +1,4 @@
-//to edit NEED TO TEST DEEZER API
+// Spotify API: https://developer.spotify.com/documentation/web-api/reference/#category-albums
 
 //route to get logged in user's info (needs the token)
 export const getMe = (token) => {
@@ -53,7 +53,7 @@ export const getMe = (token) => {
   };
   
   // make a search to spotify albums api
-  export const searchSpotifyAlbums = (query) => {
+  export const searchSpotifyAlbums = (searchQuery) => {
     // return fetch(`https://www.googleapis.com/albums/v1/volumes?q=${query}`);
-    return fetch(`https://api.spotify.com/v1/search?q=${query}`);
+    return fetch(`https://api.spotify.com/v1/search?q=${searchQuery}&type=album`);
   };
