@@ -1,4 +1,4 @@
-// TO FIX 
+// all good - but will test it out with the front end
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
@@ -8,10 +8,10 @@ type Query {
 
 type User {
     id: ID
-    username: String
-    email: String
+    username: String!
+    email: String!
     password: String
-    albums: [Album]!
+    albums: [Album]
   }
 
 type Mutation {
@@ -28,13 +28,6 @@ input AlbumInput{
     title: String
     image: String
     link: String
-}
-type User {
-    _id: ID!
-    username: String!
-    email: String!
-    albumCount: Int
-    savedAlbums: [Album]
 }
 
 type Album {

@@ -1,6 +1,6 @@
 //will edit
 import React from 'react';
-import { useQuery } from '@apollo/client';
+// import { useQuery } from '@apollo/client';
 
 //will edit this part - searchAlbums engine will place here
 // import ThoughtList from '../components/ThoughtList';
