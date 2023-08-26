@@ -1,4 +1,4 @@
-// WILL CONVERT THIS THOUGHTFORM FORMAT
+// will be linked to profile.js
 
 //import React from 'react';
 // import {

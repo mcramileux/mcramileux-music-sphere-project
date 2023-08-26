@@ -37,6 +37,8 @@
 - [Material UI v.4](https://v4.mui.com/getting-started/installation/) UI Component library 
 - [Rapid API](https://rapidapi.com/Glavier/api/spotify23/) Music API ----STILL TO TEST
 - [Error Boundaries](https://legacy.reactjs.org/docs/error-boundaries.html) for old docs that won't update
+- [Building a Spotify API Searcher in React](https://www.youtube.com/watch?v=1PWDxgqLmDA)
+- [How To Make a Donation Form In Stripe](https://www.youtube.com/watch?v=4hLXnU8SUko)
 
 ## Contributions
 Contributions to this project won't be accepted as this is the reflection of the author's work hence the following questions and answers. Furthermore, forking or creating a pull request is acceptable.
