@@ -54,6 +54,5 @@ export const getMe = (token) => {
   
   // make a search to spotify albums api
   export const searchSpotifyAlbums = (searchQuery) => {
-    // return fetch(`https://www.googleapis.com/albums/v1/volumes?q=${query}`);
     return fetch(`https://api.spotify.com/v1/search?q=${searchQuery}&type=album`);
   };

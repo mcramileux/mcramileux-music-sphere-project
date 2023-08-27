@@ -8,7 +8,7 @@ import { REMOVE_ALBUM } from '../utils/mutations';
 import { removeAlbumId } from '../utils/localStorage';
 import { useQuery, useMutation } from '@apollo/client';
 
-const SavedAlbums = () => {
+const Profile = () => {
   const { loading, data } = useQuery(GET_ME);
   let userData = data?.me || {};
   const [removeAlbum] = useMutation(REMOVE_ALBUM);
@@ -76,5 +76,4 @@ const SavedAlbums = () => {
   )
 };
 
-
-export default SavedAlbums;
+export default Profile;
