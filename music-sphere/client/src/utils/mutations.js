@@ -25,7 +25,6 @@ export const ADD_USER = gql`
   }
 `;
 
-// FOR ALBUM WILL FIX - INCLUDE THE REMOVE ALBUM BELOW
 export const SAVE_ALBUM = gql`
   mutation saveAlbum($albumData: AlbumInput!) {
     saveAlbum(albumData: $albumData) {
