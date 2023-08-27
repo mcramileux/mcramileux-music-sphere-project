@@ -1,5 +1,5 @@
 import React from 'react';
-import { Auth } from '../utils/auth';
+import  Auth  from '../utils/auth';
 import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 
 import { GET_ME } from '../utils/queries';

@@ -20,7 +20,7 @@ class MyErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI here
-      return <div>Something went wrong.</div>;
+      return <div>{this.state.error}</div>;
     }
 
     return this.props.children;
