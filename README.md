@@ -1,4 +1,4 @@
-# MusicSphere: Music Seacrh Engine
+# MusicSphere: Music Search Engine
 23rd Challenge: Final Project - MERN Stack Single-Page Application
 
 ## Description
@@ -120,7 +120,7 @@ Contributions to this project won't be accepted as this is the reflection of the
 For more questions or inquiries, please contact the author at [GitHub](https://github.com/mcramileux) or email kristineramilo21@gmail.com.
 
 ## Acknowledgements and Credits
-- Jacob Carver - weekly boot camp tutor
+- I want to thank my weekly bootcamp tutor, Jacob, for all the help he gave me throughout this journey. I won't be able get this far without his guidance. 
 - AskBCS Learning Assistants
 
 ## License
