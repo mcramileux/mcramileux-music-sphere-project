@@ -24,7 +24,7 @@ This application is a MERN Single Page Application, deployed in Heroku with MOng
 - JSON Web Tokens
 - Heroku
 - MongoDB
-- Rapid API
+- Rapid API   
   
 ## Installation and Usage
 
@@ -35,7 +35,8 @@ This application is a MERN Single Page Application, deployed in Heroku with MOng
 
 ## Links
 - Github Repository: https://github.com/mcramileux/mcramileux-music-sphere-project
-- Heroku Deployment:
+- Heroku Deployment: https://music-sphere-twopointoh-164899043ee9.herokuapp.com/
+
 
 ## References
 - [Unsplash.com](https://unsplash.com/photos/1oKxSKSOowE) for background photo
