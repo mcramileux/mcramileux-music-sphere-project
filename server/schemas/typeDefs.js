@@ -23,17 +23,19 @@ type Mutation {
 
 input AlbumInput{
     albumId: String!
-    authors: [String]
-    description: String
-    title: String
+    artists: String
+    artistId: String
+    url: String
+    title: String!
     image: String
     link: String
 }
 
 type Album {
     albumId: String!
-    authors: [String]
-    description: String
+    artist: String
+    artistId: String
+    url: String
     title: String!
     image: String
     link: String

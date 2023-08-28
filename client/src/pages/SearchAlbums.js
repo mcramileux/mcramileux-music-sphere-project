@@ -39,54 +39,47 @@ const SearchAlbums = () => {
 
 
     // Search Spotify API
-    // async function searchSpotifyAlbums(searchQuery) {
     async function searchSpotifyAlbums(searchQuery) {
-        console.log("Search for " + searchQuery); //search an artist
+
 
         //Get request using search to get the Artist ID
-        var searchParameters = {
+        var accessControl = {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + accessToken
             }
+        };
+        try {
+
+            //Get request using search to get the Artist ID
+            var getArtistId = 'https://api.spotify.com/v1/search?q=' + searchQuery + '&type=artist';
+            var artistId = await fetch(getArtistId, accessControl)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('ARTIST');
+                    console.log(data);
+                    return data.artists.items[0].id
+                });
+
+            //Get request to get the Albums from the Artist ID
+            var getAlbums = 'https://api.spotify.com/v1/artists/' + artistId + '/albums?include_groups=album&market=US&limit=50';
+            var returnedAlbums = await fetch(getAlbums, accessControl)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('ALBUMS');
+                    console.log(data);
+                    data.artistId = artistId;
+                    return data;
+                });
+
+            return returnedAlbums;
+
         }
-        var artistID = await fetch('https://api.spotify.com/v1/search?q=' + searchQuery + '&type=artist', searchParameters)
-            .then(response => response.json())
-            //   .then(data => console.log(data)) to test if it works
-            .then(data => {
-                console.log(data)
-                return data.items
-            })
-        // .then(data => { return data.artists })
-        // .then(data => { return data.artists.items[0].id })
-
-        console.log("Artist ID is " + artistID);
-        // Get request with Artist ID grab all the albums from that artist
-        // var returnedAlbums = await fetch('https://api.spotify.com/v1/artists/' + artistID + '/albums' + '?include_groups=album&market=US&limit=50', searchParameters)
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         setAlbums(data.items);
-        //     });
-
-        // Display those albums to the user
-        // try {
-        //     // const response = await searchSpotifyAlbums(searchInput);
-        //     const response = await fetch('https://api.spotify.com/v1/artists/' + artistID + '/albums' + '?include_groups=album&market=US&limit=50', searchParameters)
-        //     // const response = await fetch(`https://api.spotify.com/v1/search?q=${searchQuery}&type=album`)
-
-        //     if (!response.ok) {
-        //         throw new Error('Failed to fetch from Spotify!');
-        //     }
-
-        //     // const { items } = await response.json();
-        //     const data = await response.json();
-        //     return data.albums;
-        //     // return data.albums.items;
-        // } catch (err) {
-        //     throw (err);
-        // }
+        catch (err) {
+            console.error(err);
+            return [];
+        }
     };
 
     // create method to search for albums and set state on form submit
@@ -94,34 +87,53 @@ const SearchAlbums = () => {
         event.preventDefault();
 
         if (!searchInput) {
+            alert('Please enter an artist name');
             return false;
         }
+
+        searchSpotifyAlbums(searchInput).then(data => {
+            var artistId = data.artistId;
+            const albumData = data.items.map((album) => ({
+                albumId: album.id,
+                artists: album.artists.map(artist => artist.name).join(', '), // Convert artists array to a string
+                artistId: artistId,
+                title: album.name,
+                url: album.external_urls.spotify,
+                image: album.images[0].url
+            }));
+            console.log('ALBUM DATA');
+            console.log(albumData);
+            setAlbums(albumData);
+            // setSearchInput('gobbledegook');
+
+
+        });
+
+
+
+
+
+        //     const albumData = albums.map((album) => ({
+        //         // albumId: album.id,
+        //         // artists: album.volumeInfo.authors || ['No artist to display'],
+        //         // title: album.volumeInfo.title,
+        //         // description: album.volumeInfo.description,
+        //         // image: album.volumeInfo.imageLinks?.thumbnail || '',
+        //         albumId: album.id,
+        //         artists: album.artists.map(artist => artist.name).join(', '), // Convert artists array to a string
+        //         title: album.name,
+        //         description: album.description,
+        //         image: album.images[0].url,
+        //     }));
+
+        //     setAlbums(albumData);
+        //     setSearchInput('');
+        // } catch (err) {
+        //     console.error(err);
+        // }
     };
 
-    try {
-        const albums = searchSpotifyAlbums(searchInput);
-        console.log(albums);
-
-        const albumData = albums.map((album) => ({
-            // albumId: album.id,
-            // artists: album.volumeInfo.authors || ['No artist to display'],
-            // title: album.volumeInfo.title,
-            // description: album.volumeInfo.description,
-            // image: album.volumeInfo.imageLinks?.thumbnail || '',
-            albumId: album.id,
-            artists: album.artists.map(artist => artist.name).join(', '), // Convert artists array to a string
-            title: album.name,
-            description: album.description,
-            image: album.images[0].url,
-        }));
-
-        setAlbums(albumData);
-        setSearchInput('');
-    } catch (err) {
-        console.error(err);
-    };
-
-    // create function to handle saving a album to our database
+    // create function to handle saving an album to our database
     const handleSaveAlbum = async (albumId) => {
         // find the album in `searchedAlbums` state by the matching id
         const albumToSave = albums.find((album) => album.albumId === albumId);
@@ -179,14 +191,14 @@ const SearchAlbums = () => {
                 <Row className="mx-2 row row-cols-4">
                     {albums.map((album, i) => {
                         console.log(album);
-                        // return (
+                        return (
                         <Card>
-                            <Card.Img src={album.images[0].url} />
+                            <Card.Img src={album.image} />
                             <Card.Body>
-                                <Card.Title>{album.name}</Card.Title>
+                                <Card.Title>{album.title}</Card.Title>
                             </Card.Body>
                         </Card>
-                        // )
+                        )
                     })}
                 </Row>
             </Container>
