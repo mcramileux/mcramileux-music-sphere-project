@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { BsFillPlayCircleFill, BsFillHeartFill } from "react-icons/bs";
 import Auth from '../utils/auth';
 
 // Import Apollo hook and mutation
@@ -36,12 +37,8 @@ const SearchAlbums = () => {
         // return () => saveAlbumIds(savedAlbumIds);
     }, [])
 
-
-
     // Search Spotify API
     async function searchSpotifyAlbums(searchQuery) {
-
-
         //Get request using search to get the Artist ID
         var accessControl = {
             method: 'GET',
@@ -51,7 +48,6 @@ const SearchAlbums = () => {
             }
         };
         try {
-
             //Get request using search to get the Artist ID
             var getArtistId = 'https://api.spotify.com/v1/search?q=' + searchQuery + '&type=artist';
             var artistId = await fetch(getArtistId, accessControl)
@@ -72,9 +68,7 @@ const SearchAlbums = () => {
                     data.artistId = artistId;
                     return data;
                 });
-
             return returnedAlbums;
-
         }
         catch (err) {
             console.error(err);
@@ -128,31 +122,55 @@ const SearchAlbums = () => {
         // }
     };
 
-    // create function to handle saving an album to our database
+    const playAudio = (url) => { 
+        window.open(url);
+    }
+
     const handleSaveAlbum = async (albumId) => {
+        console.log('albumId' + albumId);
         // find the album in `searchedAlbums` state by the matching id
         const albumToSave = albums.find((album) => album.albumId === albumId);
-
+        console.log(albumToSave);
         // get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-
         if (!token) {
             return false;
         }
+        try {
+            //this code is not working
+            const { data } = await saveAlbum({
+                variables: {
+                    albumData: albumToSave
+                }
+            });
+            // if album successfully saves to user's account, save album id to state
+            setSavedAlbumIds([...savedAlbumIds, albumToSave.albumId]);
+        } catch (err) {
+            console.log(JSON.stringify(err, null, 2));
+        }
+    };
 
+    // create function to handle saving an album to our database
+    const handleSaveAlbum2 = async (albumId) => {
+        debugger;
+        // find the album in `searchedAlbums` state by the matching id
+        const albumToSave = albums.find((album) => album.albumId === albumId);
+        // get token
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+        if (!token) {
+            return false;
+        }
         try {
             const { data } = await saveAlbum({
                 variables: {
                     albumData: albumToSave
                 }
             });
-
             // if album successfully saves to user's account, save album id to state
             setSavedAlbumIds([...savedAlbumIds, albumToSave.albumId]);
         } catch (err) {
             console.error(err);
         }
-
     };
 
     return (
@@ -173,9 +191,15 @@ const SearchAlbums = () => {
                         </Col>
 
                         <Col xs={12} md={4}>
-                            <Button type='submit' variant='success' size='lg'>
-                                Search
-                            </Button>
+                            {Auth.loggedIn() ? (
+                                <Button type='submit' variant='success' size='lg' >
+                                    Search
+                                </Button>
+                            ) : (
+                                <Button type='submit' variant='success' size='lg' disabled>
+                                    Search
+                                </Button>
+                            )}
                         </Col>
                     </Row>
                 </Form>
@@ -186,12 +210,18 @@ const SearchAlbums = () => {
                     {albums.map((album, i) => {
                         console.log(album);
                         return (
-                        <Card>
-                            <Card.Img src={album.image} />
-                            <Card.Body>
-                                <Card.Title>{album.title}</Card.Title>
-                            </Card.Body>
-                        </Card>
+                            <Card key={album.albumId}>
+                                <Card.Img src={album.image} />
+                                <Card.Body>
+                                    <Card.Title>{album.title}</Card.Title>
+                                    <Button onClick={() => playAudio(album.url)}>
+                                        <BsFillPlayCircleFill />
+                                    </Button>
+                                    <Button onClick={() => handleSaveAlbum(album.albumId)}>
+                                        <BsFillHeartFill />
+                                    </Button>
+                                </Card.Body>
+                            </Card>
                         )
                     })}
                 </Row>
@@ -200,14 +230,14 @@ const SearchAlbums = () => {
                 // JSX content for authenticated user
                 <div>
                     {/* Render your authenticated user content here */}
-                    {albums.map(album => (
+                    {/* {albums.map(album => (
                         <div key={album.albumId}>
                             <h2>{album.title}</h2>
-                            <p>Artists: {album.artists}</p>
-                            {/* Additional album details */}
-                            <Button onClick={() => handleSaveAlbum(album.albumId)}>Save Album</Button>
-                        </div>
-                    ))}
+                            <p>Artists: {album.artists}</p> */}
+                    {/* Additional album details */}
+                    {/* <Button onClick={() => handleSaveAlbum(album.albumId)}>Save Album</Button> */}
+                    {/* </div> */}
+                    {/* // ))} */}
                 </div>
             ) : (
                 // JSX content for non-authenticated user

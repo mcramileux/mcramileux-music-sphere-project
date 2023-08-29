@@ -33,10 +33,10 @@ const Signup = () => {
       const { data } = await addUser({
         variables: { ...formState },
       });
-
+      // console.log(formState);
       Auth.login(data.addUser.token);
     } catch (e) {
-      console.error(e);
+      console.log(JSON.stringify(e, null, 2));
     }
   };
 

@@ -5,7 +5,7 @@ export const LOGIN_USER = gql`
     login(email: $email, password: $password) {
       token
       user {
-        _id
+        id
         username
         email
       }
@@ -18,8 +18,9 @@ export const ADD_USER = gql`
     addUser(username: $username, email: $email, password: $password) {
       token
       user {
-        _id
+        id
         username
+        email
       }
     }
   }
@@ -33,11 +34,11 @@ export const SAVE_ALBUM = gql`
       email
       savedAlbums {
         albumId
-        authors
-        image
-        description
+        artists
+        artistId
         title
-        link
+        url
+        image
       }
     }
   }
@@ -60,4 +61,28 @@ export const REMOVE_ALBUM = gql`
       }
     }
   }
+`;
+
+export const ADD_COMMENT = gql`
+mutation AddComment($commentText: String!, $commentAuthor: String!, $musicId: String) {
+  addComment(commentText: $commentText, commentAuthor: $commentAuthor, musicId: $musicId) {
+    _id
+    musicId
+    commentText
+    commentAuthor
+    createdAt
+  }
+}
+`;
+
+export const REMOVE_COMMENT = gql`
+mutation RemoveComment($commentId: ID!) {
+  removeComment(commentId: $commentId) {
+    _id
+    musicId
+    commentText
+    commentAuthor
+    createdAt
+  }
+}
 `;

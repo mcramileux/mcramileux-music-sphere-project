@@ -21,14 +21,14 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
-      minlength: 7,
     },
-    album: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Album',
-      }
-    ]
+    // savedAlbums: [albumSchema],
+    // album: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Album',
+    //   }
+    // ]
   },
 );
 
