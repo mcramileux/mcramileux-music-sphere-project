@@ -2,31 +2,28 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose ;
 
 const albumSchema = new Schema({
-  artists: [
-    {
-      type: String,
-      required: true,
-      trim: true,
-    },
-  ],
-  description: {
-    type: String,
-    required: true,
-  },
-  
   albumId: {
     type: String,
     required: true,
   },
-  image: {
-    type: String,
+  artists: {
+      type: String,
+      required: true,
+      trim: true,
   },
-  link: {
+  artistId: {
     type: String,
+    required: true,
   },
   title: {
     type: String,
     required: true,
+  },
+  url: {
+    type: String,
+  },
+  image: {
+    type: String,
   },
 });
 
