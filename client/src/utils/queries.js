@@ -41,8 +41,8 @@ export const QUERY_ME = gql`
       email
       savedAlbums {
         _id
-        thoughtText
-        thoughtAuthor
+        commentText
+        commentAuthor
         createdAt
       }
     }
