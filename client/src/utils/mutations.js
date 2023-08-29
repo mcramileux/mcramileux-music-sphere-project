@@ -64,10 +64,10 @@ export const REMOVE_ALBUM = gql`
 `;
 
 export const ADD_COMMENT = gql`
-mutation AddComment($commentText: String!, $commentAuthor: String!, $musicId: String) {
-  addComment(commentText: $commentText, commentAuthor: $commentAuthor, musicId: $musicId) {
+mutation AddComment($commentText: String!, $commentAuthor: String!, $albumId: String) {
+  addComment(commentText: $commentText, commentAuthor: $commentAuthor, albumId: $albumId) {
     _id
-    musicId
+    albumId
     commentText
     commentAuthor
     createdAt
@@ -79,7 +79,7 @@ export const REMOVE_COMMENT = gql`
 mutation RemoveComment($commentId: ID!) {
   removeComment(commentId: $commentId) {
     _id
-    musicId
+    albumId
     commentText
     commentAuthor
     createdAt
