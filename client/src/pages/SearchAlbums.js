@@ -108,11 +108,6 @@ const SearchAlbums = () => {
 
 
         });
-
-
-
-
-
         //     const albumData = albums.map((album) => ({
         //         // albumId: album.id,
         //         // artists: album.volumeInfo.authors || ['No artist to display'],
@@ -157,7 +152,6 @@ const SearchAlbums = () => {
         } catch (err) {
             console.error(err);
         }
-
 
     };
 
@@ -226,63 +220,3 @@ const SearchAlbums = () => {
     )
 };
 export default SearchAlbums;
-
-
-
-
-
-// ... (other imports)
-
-// const SearchAlbums = () => {
-//     const [searchInput, setSearchInput] = useState('');
-//     const [accessToken, setAccessToken] = useState('');
-//     const [albums, setAlbums] = useState([]);
-//     // ... (other state and useEffect logic)
-
-//     const handleFormSubmit = async (event) => {
-//         event.preventDefault();
-
-//         if (!searchInput) {
-//             return false;
-//         }
-
-//         try {
-//             const albums = await searchSpotifyAlbums(searchInput);
-//             // ... (rest of the logic)
-//         } catch (err) {
-//             console.error(err);
-//         }
-//     };
-
-//     const handleSaveAlbum = async (albumId) => {
-//         // ... (album saving logic)
-//     };
-
-//     return (
-//         <div>
-//             <Container>
-//                 {/* ... (form and search UI) */}
-//             </Container>
-
-//             <Container>
-//                 <Row className="mx-2 row row-cols-4">
-//                     {albums.map((album, i) => (
-//                         <Card key={i}>
-//                             <Card.Img src={album.images[0].url} />
-//                             <Card.Body>
-//                                 <Card.Title>{album.name}</Card.Title>
-//                             </Card.Body>
-//                         </Card>
-//                     ))}
-//                 </Row>
-//             </Container>
-//             {/* {Auth.loggedIn() ? (
-//                 // ... (authenticated user JSX content)
-//             ) : (
-//                 // ... (non-authenticated user JSX content)
-//             )} */}
-//         </div>
-//     );
-// };
-
-// export default SearchAlbums;
