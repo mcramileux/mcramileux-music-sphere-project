@@ -11,19 +11,19 @@ type User {
     username: String!
     email: String!
     password: String
-    albums: [Album]
+    savedAlbums: [Album]
   }
 
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    faveAlbum(albumData: AlbumInput!): User
+    saveAlbum(albumData: AlbumInput!): User
     removeAlbum(albumId: String!): User
 }
 
 input AlbumInput{
     albumId: String!
-    artists: String
+    artist: String
     artistId: String
     url: String
     title: String!

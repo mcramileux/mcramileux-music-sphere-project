@@ -47,12 +47,12 @@ const resolvers = {
         return { token, user };
       },
 
-      faveAlbum: async (parent, { albumData }, context) => {
+      saveAlbum: async (parent, { albumData }, context) => {
         // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
         if (context.user) {
           const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
-            { $addToSet: { favoriteAlbums: albumData } },
+            { $addToSet: { savedBooks: albumData } },
             { new: true, runValidators: true }
           );
   

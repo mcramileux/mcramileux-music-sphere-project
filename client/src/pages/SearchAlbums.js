@@ -89,7 +89,7 @@ const SearchAlbums = () => {
             var artistId = data.artistId;
             const albumData = data.items.map((album) => ({
                 albumId: album.id,
-                artists: album.artists.map(artist => artist.name).join(', '), // Convert artists array to a string
+                artist: album.artists.map(artist => artist.name).join(', '), // Convert artist array to a string
                 artistId: artistId,
                 title: album.name,
                 url: album.external_urls.spotify,
@@ -99,8 +99,6 @@ const SearchAlbums = () => {
             console.log(albumData);
             setAlbums(albumData);
             // setSearchInput('gobbledegook');
-
-
         });
         //     const albumData = albums.map((album) => ({
         //         // albumId: album.id,
@@ -167,7 +165,7 @@ const SearchAlbums = () => {
                 }
             });
             // if album successfully saves to user's account, save album id to state
-            setSavedAlbumIds([...savedAlbumIds, albumToSave.albumId]);
+             setSavedAlbumIds([...savedAlbumIds, albumToSave.albumId]);
         } catch (err) {
             console.error(err);
         }

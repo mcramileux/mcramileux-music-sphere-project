@@ -3,48 +3,48 @@ import { gql } from '@apollo/client';
 export const GET_ME = gql`
   query me {
     me {
-        _id
+        id
         username
         email
         savedAlbums {
-            albumId
-            authors
-            description
-            title
-            image
-            link
+          albumId
+          artist
+          artistId
+          title
+          url
+          image
         }
     }
 }
 `;
 
-export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
-      _id
-      username
-      email
-       search {
-        _id
-        searchAlbums
-        createdAt
-      }
-    }
-  }
-`;
+// export const QUERY_USER = gql`
+//   query user($username: String!) {
+//     user(username: $username) {
+//       id
+//       username
+//       email
+//        search {
+//         id
+//         searchAlbums
+//         createdAt
+//       }
+//     }
+//   }
+// `;
 
-export const QUERY_ME = gql`
-  query me {
-    me {
-      _id
-      username
-      email
-      savedAlbums {
-        _id
-        commentText
-        commentAuthor
-        createdAt
-      }
-    }
-  }
-`;
+// export const QUERY_ME = gql`
+//   query me {
+//     me {
+//       id
+//       username
+//       email
+//       savedAlbums {
+//         id
+//         commentText
+//         commentAuthor
+//         createdAt
+//       }
+//     }
+//   }
+// `;

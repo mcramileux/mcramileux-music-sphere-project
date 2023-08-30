@@ -29,12 +29,31 @@ export const ADD_USER = gql`
 export const SAVE_ALBUM = gql`
   mutation saveAlbum($albumData: AlbumInput!) {
     saveAlbum(albumData: $albumData) {
-      _id
+      id
       username
       email
-      savedAlbums {
+        savedAlbums {
+          albumId
+          artist
+          artistId
+          title
+          url
+          image
+        }
+    }
+  }
+`;
+
+export const REMOVE_ALBUM = gql`
+  mutation removeAlbum($albumId: String!) {
+    removeAlbum(albumId: $albumId) {
+      id
+      username
+      email
+      albumCount
+      savedAlbum {
         albumId
-        artists
+        artist
         artistId
         title
         url
@@ -44,29 +63,10 @@ export const SAVE_ALBUM = gql`
   }
 `;
 
-export const REMOVE_ALBUM = gql`
-  mutation removeAlbum($albumId: String!) {
-    removeAlbum(albumId: $albumId) {
-      _id
-      username
-      email
-      albumCount
-      savedAlbum {
-        albumId
-        authors
-        description
-        title
-        image
-        link
-      }
-    }
-  }
-`;
-
 export const ADD_COMMENT = gql`
 mutation AddComment($commentText: String!, $commentAuthor: String!, $albumId: String) {
   addComment(commentText: $commentText, commentAuthor: $commentAuthor, albumId: $albumId) {
-    _id
+    id
     albumId
     commentText
     commentAuthor
@@ -78,7 +78,7 @@ mutation AddComment($commentText: String!, $commentAuthor: String!, $albumId: St
 export const REMOVE_COMMENT = gql`
 mutation RemoveComment($commentId: ID!) {
   removeComment(commentId: $commentId) {
-    _id
+    id
     albumId
     commentText
     commentAuthor
