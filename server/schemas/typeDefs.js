@@ -25,20 +25,18 @@ input AlbumInput{
     albumId: String!
     artist: String
     artistId: String
-    url: String
     title: String!
+    url: String
     image: String
-    link: String
 }
 
 type Album {
     albumId: String!
     artist: String
     artistId: String
-    url: String
     title: String!
+    url: String
     image: String
-    link: String
 }
 
 type Auth {

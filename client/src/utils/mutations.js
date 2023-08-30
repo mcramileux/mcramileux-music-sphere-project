@@ -50,8 +50,7 @@ export const REMOVE_ALBUM = gql`
       id
       username
       email
-      albumCount
-      savedAlbum {
+      savedAlbums {
         albumId
         artist
         artistId

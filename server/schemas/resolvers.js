@@ -52,7 +52,7 @@ const resolvers = {
         if (context.user) {
           const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
-            { $addToSet: { savedBooks: albumData } },
+            { $addToSet: { savedAlbums: albumData } },
             { new: true, runValidators: true }
           );
   
@@ -67,7 +67,7 @@ const resolvers = {
         if (context.user) {
           const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
-            { $pull: { favoriteAlbums: { albumId } } },
+            { $pull: { savedAlbums: { albumId } } },
             { new: true }
           );
           return updatedUser;

@@ -68,14 +68,15 @@ function App() {
                 element={<Profile />}
               />
               <Route
-                path="/profiles/:username"
-                element={<Profile />}
-              />
-              <Route
                 path="/search"
                 element={<SearchAlbums />}
               />
+               <Route 
+                path='*'
+                element={<h1 className='display-2'>Wrong page!</h1>}
+              />
             </Routes>
+            
           </div>
           <Footer />
         </div>

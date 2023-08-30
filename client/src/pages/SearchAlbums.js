@@ -206,7 +206,6 @@ const SearchAlbums = () => {
             <Container>
                 <Row className="mx-2 row row-cols-4">
                     {albums.map((album, i) => {
-                        console.log(album);
                         return (
                             <Card key={album.albumId}>
                                 <Card.Img src={album.image} />
