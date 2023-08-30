@@ -1,5 +1,3 @@
-// do not change - all good for the mean time
-
 export const getSavedAlbumIds = () => {
     const savedAlbumIds = localStorage.getItem('saved_albums')
       ? JSON.parse(localStorage.getItem('saved_albums'))

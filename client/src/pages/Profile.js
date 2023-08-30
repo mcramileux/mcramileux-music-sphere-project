@@ -19,7 +19,6 @@ const Profile = () => {
   const playAudio = (url) => { 
     window.open(url);
 }
-
   // function that accepts the album's mongo _id value as param and deletes the album from the database
   const handleDeleteAlbum = async (albumId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -60,7 +59,7 @@ const Profile = () => {
             ? `Viewing ${userData.savedAlbums.length} saved ${userData.savedAlbums.length === 1 ? 'album' : 'albums'}:`
             : 'You have no saved albums!'}
         </h2>
-        <Row>
+                  <Row>
                     {userData.savedAlbums.map((album, i) => {
                         return (
                           <Card key={i} className="col-xs-12 col-sm-6 col-lg-4 text-center"  style={{border:'none'}}>
