@@ -124,7 +124,7 @@ const SearchAlbums = () => {
         window.open(url);
     }
 
-    const handleSaveAlbum = async (albumId) => {
+    const handleSaveAlbum = async (albumId, ev) => {
         console.log('albumId' + albumId);
         // find the album in `searchedAlbums` state by the matching id
         const albumToSave = albums.find((album) => album.albumId === albumId);
@@ -143,37 +143,17 @@ const SearchAlbums = () => {
             });
             // if album successfully saves to user's account, save album id to state
             setSavedAlbumIds([...savedAlbumIds, albumToSave.albumId]);
+            alert('Your album has been saved!');
         } catch (err) {
             console.log(JSON.stringify(err, null, 2));
         }
     };
 
-    // create function to handle saving an album to our database
-    const handleSaveAlbum2 = async (albumId) => {
-        debugger;
-        // find the album in `searchedAlbums` state by the matching id
-        const albumToSave = albums.find((album) => album.albumId === albumId);
-        // get token
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
-        if (!token) {
-            return false;
-        }
-        try {
-            const { data } = await saveAlbum({
-                variables: {
-                    albumData: albumToSave
-                }
-            });
-            // if album successfully saves to user's account, save album id to state
-            setSavedAlbumIds([...savedAlbumIds, albumToSave.albumId]);
-        } catch (err) {
-            console.error(err);
-        }
-    };
+
 
     return (
         <div>
-            <Container style={{marginBottom:'20px'}}>
+            <Container style={{ marginBottom: '20px' }}>
                 <h1>Search for Albums!</h1>
                 <Form onSubmit={handleFormSubmit}>
                     <Row>
@@ -207,17 +187,17 @@ const SearchAlbums = () => {
                 <Row>
                     {albums.map((album, i) => {
                         return (
-                            <Card key={album.albumId} className="col-xs-12 col-sm-6 col-lg-4 text-center"  style={{border:'none'}}>
+                            <Card key={i} className="col-xs-12 col-sm-6 col-lg-4 text-center" style={{ border: 'none' }}>
                                 <Card.Img src={album.image} />
                                 <Card.Body>
-                                    <Card.Title style={{height:'50px'}}>{album.title}</Card.Title>
-                                    <ButtonGroup style={{width:'100%'}}>
-                                    <Button onClick={() => playAudio(album.url)}>
-                                        <BsFillPlayCircleFill />
-                                    </Button>
-                                    <Button onClick={() => handleSaveAlbum(album.albumId)}>
-                                        <BsFillHeartFill />
-                                    </Button>
+                                    <Card.Title style={{ height: '50px' }}>{album.title}</Card.Title>
+                                    <ButtonGroup style={{ width: '100%' }}>
+                                        <Button onClick={() => playAudio(album.url)}>
+                                            <BsFillPlayCircleFill />
+                                        </Button>
+                                        <Button onClick={(ev) => handleSaveAlbum(album.albumId, ev)}>
+                                            <BsFillHeartFill />
+                                        </Button>
                                     </ButtonGroup>
                                 </Card.Body>
                             </Card>

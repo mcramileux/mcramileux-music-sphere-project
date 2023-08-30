@@ -63,7 +63,7 @@ const Profile = () => {
         <Row>
                     {userData.savedAlbums.map((album, i) => {
                         return (
-                          <Card key={album.albumId} className="col-xs-12 col-sm-6 col-lg-4 text-center"  style={{border:'none'}}>
+                          <Card key={i} className="col-xs-12 col-sm-6 col-lg-4 text-center"  style={{border:'none'}}>
                                 <Card.Img src={album.image} />
                                 <Card.Body>
                                     <Card.Title style={{height:'50px'}}>{album.title}</Card.Title>
