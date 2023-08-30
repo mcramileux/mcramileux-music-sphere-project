@@ -1,6 +1,6 @@
 import React from 'react';
 import Auth from '../utils/auth';
-import { Container, Card, Button, Row, Col } from 'react-bootstrap';
+import { Container, Card, Button, ButtonGroup,Row, Col } from 'react-bootstrap';
 import { BsFillPlayCircleFill, BsFillTrash3Fill } from "react-icons/bs";
 
 import { GET_ME } from '../utils/queries';
@@ -60,19 +60,21 @@ const Profile = () => {
             ? `Viewing ${userData.savedAlbums.length} saved ${userData.savedAlbums.length === 1 ? 'album' : 'albums'}:`
             : 'You have no saved albums!'}
         </h2>
-        <Row className="mx-2 row row-cols-4">
+        <Row>
                     {userData.savedAlbums.map((album, i) => {
                         return (
-                            <Card key={album.albumId}>
+                          <Card key={album.albumId} className="col-xs-12 col-sm-6 col-lg-4 text-center"  style={{border:'none'}}>
                                 <Card.Img src={album.image} />
                                 <Card.Body>
-                                    <Card.Title>{album.title}</Card.Title>
+                                    <Card.Title style={{height:'50px'}}>{album.title}</Card.Title>
+                                    <ButtonGroup style={{width:'100%'}}>
                                     <Button onClick={() => playAudio(album.url)}>
                                         <BsFillPlayCircleFill />
                                     </Button>
                                     <Button onClick={() => handleDeleteAlbum(album.albumId)}>
                                         <BsFillTrash3Fill />
                                     </Button>
+                                    </ButtonGroup>
                                 </Card.Body>
                             </Card>
                         )

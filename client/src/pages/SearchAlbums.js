@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, ButtonGroup, Card } from 'react-bootstrap';
 import { BsFillPlayCircleFill, BsFillHeartFill } from "react-icons/bs";
 import Auth from '../utils/auth';
 
@@ -120,7 +120,7 @@ const SearchAlbums = () => {
         // }
     };
 
-    const playAudio = (url) => { 
+    const playAudio = (url) => {
         window.open(url);
     }
 
@@ -165,7 +165,7 @@ const SearchAlbums = () => {
                 }
             });
             // if album successfully saves to user's account, save album id to state
-             setSavedAlbumIds([...savedAlbumIds, albumToSave.albumId]);
+            setSavedAlbumIds([...savedAlbumIds, albumToSave.albumId]);
         } catch (err) {
             console.error(err);
         }
@@ -173,11 +173,11 @@ const SearchAlbums = () => {
 
     return (
         <div>
-            <Container>
+            <Container style={{marginBottom:'20px'}}>
                 <h1>Search for Albums!</h1>
                 <Form onSubmit={handleFormSubmit}>
                     <Row>
-                        <Col xs={12} md={8}>
+                        <Col xs={8}>
                             <Form.Control
                                 name='searchInput'
                                 value={searchInput}
@@ -188,13 +188,13 @@ const SearchAlbums = () => {
                             />
                         </Col>
 
-                        <Col xs={12} md={4}>
+                        <Col xs={4}>
                             {Auth.loggedIn() ? (
-                                <Button type='submit' variant='success' size='lg' >
+                                <Button type='submit' variant='danger' size='lg' >
                                     Search
                                 </Button>
                             ) : (
-                                <Button type='submit' variant='success' size='lg' disabled>
+                                <Button type='submit' variant='danger' size='lg' disabled>
                                     Search
                                 </Button>
                             )}
@@ -204,19 +204,21 @@ const SearchAlbums = () => {
             </Container>
 
             <Container>
-                <Row className="mx-2 row row-cols-4">
+                <Row>
                     {albums.map((album, i) => {
                         return (
-                            <Card key={album.albumId}>
+                            <Card key={album.albumId} className="col-xs-12 col-sm-6 col-lg-4 text-center"  style={{border:'none'}}>
                                 <Card.Img src={album.image} />
                                 <Card.Body>
-                                    <Card.Title>{album.title}</Card.Title>
+                                    <Card.Title style={{height:'50px'}}>{album.title}</Card.Title>
+                                    <ButtonGroup style={{width:'100%'}}>
                                     <Button onClick={() => playAudio(album.url)}>
                                         <BsFillPlayCircleFill />
                                     </Button>
                                     <Button onClick={() => handleSaveAlbum(album.albumId)}>
                                         <BsFillHeartFill />
                                     </Button>
+                                    </ButtonGroup>
                                 </Card.Body>
                             </Card>
                         )
