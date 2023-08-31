@@ -15,7 +15,6 @@ const Profile = () => {
   const [removeAlbum] = useMutation(REMOVE_ALBUM);
 
   console.log(userData);
-
   const playAudio = (url) => { 
     window.open(url);
 }
@@ -48,7 +47,7 @@ const Profile = () => {
     <>
       <div className="text-light bg-dark p-5">
         <Container>
-          <h1>Viewing saved albums!</h1>
+          <h1>Viewing your favourite albums!</h1>
         </Container>
       </div>
 
@@ -56,7 +55,7 @@ const Profile = () => {
         <h2 className='pt-5'>
          
           {userData.savedAlbums.length
-            ? `Viewing ${userData.savedAlbums.length} saved ${userData.savedAlbums.length === 1 ? 'album' : 'albums'}:`
+            ? `Your ${userData.savedAlbums.length} saved ${userData.savedAlbums.length === 1 ? 'album' : 'albums'}:`
             : 'You have no saved albums!'}
         </h2>
                   <Row>

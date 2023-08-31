@@ -18,6 +18,30 @@ export const GET_ME = gql`
 }
 `;
 
+export const QUERY_COMMENTS = gql`
+query Comments($albumId: String) {
+  comments(albumId: $albumId) {
+    id
+    albumId
+    commentText
+    commentAuthor
+    createdAt
+  }
+}
+`;
+
+export const QUERY_COMMENT = gql`
+query Comment($albumId: String) {
+  comment(albumId: $albumId) {
+      id
+      albumId
+      commentText
+      commentAuthor
+      createdAt
+    }
+  }
+`;
+
 // export const QUERY_USER = gql`
 //   query user($username: String!) {
 //     user(username: $username) {
@@ -40,11 +64,20 @@ export const GET_ME = gql`
 //       username
 //       email
 //       savedAlbums {
-//         id
-//         commentText
-//         commentAuthor
-//         createdAt
-//       }
+//          albumId
+//          artist
+//          artistId
+//          title
+//          url
+//          image
+//          comments {
+//            id
+//            albumId
+//            commentText
+//            commentAuthor
+//            createdAt
+//           }
+//        }
 //     }
 //   }
 // `;
