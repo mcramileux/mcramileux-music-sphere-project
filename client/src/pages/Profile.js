@@ -1,6 +1,6 @@
 import React from 'react';
 import Auth from '../utils/auth';
-import { Container, Card, Button, ButtonGroup,Row, Col } from 'react-bootstrap';
+import { Container, Card, Button, ButtonGroup, Row } from 'react-bootstrap';
 import { BsFillPlayCircleFill, BsFillTrash3Fill } from "react-icons/bs";
 
 import { GET_ME } from '../utils/queries';
