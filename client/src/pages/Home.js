@@ -1,6 +1,6 @@
 // all good do not change
 import React from 'react';
-import SearchAlbums from './SearchAlbums';
+import SearchAlbums from '../pages/SearchAlbums';
 
 const Home = () => {
     return (
