@@ -2,9 +2,10 @@
 23rd Challenge: Final Project - MERN Stack Single-Page Application
 
 ## Description
-MusicSphere is an music search engine powered by Spotify API. By searching the artists, you will be able to see the albums and favorite it placing to your profile. All searches won't be accepted not unless you are a member.
+MusicSphere is a music search engine powered by Spotify API. By searching the artists, you will be able to see the albums and favorite ones, placing it on your profile. All searches won't be accepted not unless you are a member.
 
 This application is a MERN Single Page Application, deployed in Heroku with MOngoDB.
+
 
 ## User Story
 ```md
