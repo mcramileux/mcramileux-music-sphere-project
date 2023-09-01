@@ -14,20 +14,20 @@ export const GET_ME = gql`
           url
           image
         }
-    }
-}
-`;
+      }
+     }
+  `;
 
 export const QUERY_COMMENTS = gql`
-query Comments($albumId: String) {
-  comments(albumId: $albumId) {
-    id
-    albumId
-    commentText
-    commentAuthor
-    createdAt
+  query Comments($albumId: String) {
+    comments(albumId: $albumId) {
+      id
+      albumId
+      commentText
+      commentAuthor
+      createdAt
+    }
   }
-}
 `;
 
 export const QUERY_COMMENT = gql`
