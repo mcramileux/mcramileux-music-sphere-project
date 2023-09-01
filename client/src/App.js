@@ -16,6 +16,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import SearchAlbums from './pages/SearchAlbums';
+import SingleAlbum from './pages/SingleAlbum';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -70,6 +71,10 @@ function App() {
               <Route
                 path="/search"
                 element={<SearchAlbums />}
+              />
+              <Route
+                path="/single-album/:albumId"
+                element={<SingleAlbum />}
               />
                <Route 
                 path='*'

@@ -1,6 +1,7 @@
 import React from 'react';
 import Auth from '../utils/auth';
 import { Container, Card, Button, ButtonGroup, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { BsFillPlayCircleFill, BsFillTrash3Fill } from "react-icons/bs";
 
 import { GET_ME } from '../utils/queries';
@@ -65,6 +66,8 @@ const Profile = () => {
                                 <Card.Img src={album.image} />
                                 <Card.Body>
                                     <Card.Title style={{height:'50px'}}>{album.title}</Card.Title>
+                                    <p><Link className='btn-block btn-link' to={`/album/${album.albumId}`}> 
+                                      View Album Details</Link></p>
                                     <ButtonGroup style={{width:'100%'}}>
                                     <Button onClick={() => playAudio(album.url)}>
                                         <BsFillPlayCircleFill />
@@ -75,6 +78,7 @@ const Profile = () => {
                                     </ButtonGroup>
                                 </Card.Body>
                             </Card>
+                         
                         )
                     })}
                 </Row>

@@ -111,7 +111,7 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 - [How To Make a Donation Form In Stripe](https://www.youtube.com/watch?v=4hLXnU8SUko)
 - [Stripe](https://stripe.com/docs/stripe-js/react) for Donation Payment
 - MERN and State Class Activities - used the mini-projects as the starter code
-- 
+- [How to go back to a previous commit](https://medium.com/swlh/using-git-how-to-go-back-to-a-previous-commit-8579ccc8180f)
 
 ## Contributions
 Contributions to this project won't be accepted as this is the reflection of the author's work hence the following questions and answers. Furthermore, forking or creating a pull request is acceptable.

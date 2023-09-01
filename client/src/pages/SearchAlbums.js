@@ -98,7 +98,6 @@ const SearchAlbums = () => {
             console.log('ALBUM DATA');
             console.log(albumData);
             setAlbums(albumData);
-            // setSearchInput('gobbledegook');
         });
         //     const albumData = albums.map((album) => ({
         //         // albumId: album.id,
@@ -143,7 +142,7 @@ const SearchAlbums = () => {
             });
             // if album successfully saves to user's account, save album id to state
             setSavedAlbumIds([...savedAlbumIds, albumToSave.albumId]);
-            alert('Your album has been saved!');
+            alert('Your album has been saved! Please go to your favorites to view.');
         } catch (err) {
             console.log(JSON.stringify(err, null, 2));
         }
