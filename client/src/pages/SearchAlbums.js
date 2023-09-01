@@ -34,7 +34,6 @@ const SearchAlbums = () => {
         fetch('https://accounts.spotify.com/api/token', authParameters)
             .then(result => result.json())
             .then(data => setAccessToken(data.access_token))
-        // return () => saveAlbumIds(savedAlbumIds);
     }, [])
 
     // Search Spotify API
@@ -99,24 +98,6 @@ const SearchAlbums = () => {
             console.log(albumData);
             setAlbums(albumData);
         });
-        //     const albumData = albums.map((album) => ({
-        //         // albumId: album.id,
-        //         // artists: album.volumeInfo.authors || ['No artist to display'],
-        //         // title: album.volumeInfo.title,
-        //         // description: album.volumeInfo.description,
-        //         // image: album.volumeInfo.imageLinks?.thumbnail || '',
-        //         albumId: album.id,
-        //         artists: album.artists.map(artist => artist.name).join(', '), // Convert artists array to a string
-        //         title: album.name,
-        //         description: album.description,
-        //         image: album.images[0].url,
-        //     }));
-
-        //     setAlbums(albumData);
-        //     setSearchInput('');
-        // } catch (err) {
-        //     console.error(err);
-        // }
     };
 
     const playAudio = (url) => {
@@ -147,8 +128,6 @@ const SearchAlbums = () => {
             console.log(JSON.stringify(err, null, 2));
         }
     };
-
-
 
     return (
         <div>
@@ -208,14 +187,7 @@ const SearchAlbums = () => {
                 // JSX content for authenticated user
                 <div>
                     {/* Render your authenticated user content here */}
-                    {/* {albums.map(album => (
-                        <div key={album.albumId}>
-                            <h2>{album.title}</h2>
-                            <p>Artists: {album.artists}</p> */}
-                    {/* Additional album details */}
-                    {/* <Button onClick={() => handleSaveAlbum(album.albumId)}>Save Album</Button> */}
-                    {/* </div> */}
-                    {/* // ))} */}
+                
                 </div>
             ) : (
                 // JSX content for non-authenticated user
