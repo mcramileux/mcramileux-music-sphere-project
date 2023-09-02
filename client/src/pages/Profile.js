@@ -3,6 +3,7 @@ import Auth from '../utils/auth';
 import { Container, Card, Button, ButtonGroup, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { BsFillPlayCircleFill, BsFillTrash3Fill } from "react-icons/bs";
+import { FaCommentAlt } from "react-icons/fa";
 
 import { GET_ME } from '../utils/queries';
 import { REMOVE_ALBUM } from '../utils/mutations';
@@ -16,9 +17,12 @@ const Profile = () => {
   const [removeAlbum] = useMutation(REMOVE_ALBUM);
 
   console.log(userData);
-  const playAudio = (url) => { 
+
+
+  const playAudio = (url) => {
     window.open(url);
-}
+  }
+
   // function that accepts the album's mongo _id value as param and deletes the album from the database
   const handleDeleteAlbum = async (albumId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -54,34 +58,33 @@ const Profile = () => {
 
       <Container>
         <h2 className='pt-5'>
-         
+
           {userData.savedAlbums.length
             ? `Your ${userData.savedAlbums.length} saved ${userData.savedAlbums.length === 1 ? 'album' : 'albums'}:`
             : 'You have no saved albums!'}
         </h2>
-                  <Row>
-                    {userData.savedAlbums.map((album, i) => {
-                        return (
-                          <Card key={i} className="col-xs-12 col-sm-6 col-lg-4 text-center"  style={{border:'none'}}>
-                                <Card.Img src={album.image} />
-                                <Card.Body>
-                                    <Card.Title style={{height:'50px'}}>{album.title}</Card.Title>
-                                    <p><Link className='btn-block btn-link' to={`/album/${album.albumId}`}> 
-                                      View Album Details</Link></p>
-                                    <ButtonGroup style={{width:'100%'}}>
-                                    <Button onClick={() => playAudio(album.url)}>
-                                        <BsFillPlayCircleFill />
-                                    </Button>
-                                    <Button onClick={() => handleDeleteAlbum(album.albumId)}>
-                                        <BsFillTrash3Fill />
-                                    </Button>
-                                    </ButtonGroup>
-                                </Card.Body>
-                            </Card>
-                         
-                        )
-                    })}
-                </Row>
+        <Row>
+          {userData.savedAlbums.map((album, i) => {
+            return (
+              <Card key={i} className="col-xs-12 col-sm-6 col-lg-4 text-center" style={{ border: 'none' }}>
+                <Card.Img src={album.image} />
+                <Card.Body>
+                  <Card.Title style={{ height: '50px' }}>{album.title}</Card.Title>
+                  <ButtonGroup style={{ width: '100%' }}>
+                    <Button onClick={() => playAudio(album.url)}>
+                      <BsFillPlayCircleFill />
+                    </Button>
+                    <Link className='btn btn-primary' to={`/single-album/${album.albumId}`}>
+                      <FaCommentAlt /></Link>
+                    <Button onClick={() => handleDeleteAlbum(album.albumId)}>
+                      <BsFillTrash3Fill />
+                    </Button>
+                  </ButtonGroup>
+                </Card.Body>
+              </Card>
+            )
+          })}
+        </Row>
       </Container>
     </>
   )

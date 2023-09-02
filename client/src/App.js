@@ -16,7 +16,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import SearchAlbums from './pages/SearchAlbums';
-// import SingleAlbum from './pages/SingleAlbum';
+import SingleAlbum from './pages/SingleAlbum';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -72,10 +72,10 @@ function App() {
                 path="/search"
                 element={<SearchAlbums />}
               />
-              {/* <Route
+              <Route
                 path="/single-album/:albumId"
                 element={<SingleAlbum />}
-              /> */}
+              />
                <Route 
                 path='*'
                 element={<h1 className='display-2'>Wrong page!</h1>}

@@ -47,12 +47,12 @@ const handleFormSubmit = async (event) => {
 
   return (
     <div>
-      <h4>Please leave a comment on this album.</h4>
+      <h3 className='m-2 text-center'>Please leave a comment on this album.</h3>
 
       {Auth.loggedIn() ? (
         <>
           <p
-            className={`m-0 ${
+            className={`m-2 ${
               characterCount === 280 || error ? 'text-danger' : ''
             }`}
           >
@@ -75,8 +75,8 @@ const handleFormSubmit = async (event) => {
               ></textarea>
             </div>
 
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+            <div className="col-12 col-lg-3 mt-2 mt-lg-0">
+              <button className="btn btn-primary btn-block" type="submit">
                 Add a comment
               </button>
             </div>

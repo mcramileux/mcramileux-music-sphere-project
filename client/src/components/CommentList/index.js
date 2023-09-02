@@ -1,33 +1,30 @@
 // ADDING THIS AGAIN FOR THE CRITERIA
 import React from 'react';
-// import Auth from '../utils/auth';
 // import { Container, Card, Button, ButtonGroup, Row } from 'react-bootstrap';
+// import Auth from '../utils/auth';
+// import { Link } from 'react-router-dom';
 
+// import { useQuery, useMutation } from '@apollo/client';
 // import { QUERY_COMMENTS } from '../utils/queries';
 // import { REMOVE_COMMENT } from '../utils/mutations';
-// import { useQuery, useMutation } from '@apollo/client';
 
 const CommentList = ({ comments = [] }) => {
     // const { albumId } = useParams();
     // const { data } = useQuery(QUERY_COMMENTS);
     // // let userData = data?.me || {};
-    // const [removeComment, { loading, error }] = useMutation(REMOVE_COMMENT);
 
-    if (!comments.length) {
-    return <h3>No Comments Yet</h3>;
+    // const [removeComment, { error }] = useMutation(REMOVE_COMMENT, {
+    //     update(cache, [ QUERY_COMMENTS ]});
+    // if (!comments.length) {
+    // return <h3>No Comments Yet</h3>;
   }
 
-//     const handleRemoveComment = async (commentId, albumId) => {
+//     const handleRemoveComment = async (commentId) => {
 //     console.log(commentId);
-//     // const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-//     // if (!token) {
-//     //     return false;
-//     // }
 
 //     try {
 //         const { data } = await removeComment({
-//             variables: { commentId },
+//             variables: { commentId }
 //         });
 //     // userData = data;
 //     // removeComment(commentId);
@@ -37,28 +34,28 @@ const CommentList = ({ comments = [] }) => {
 // };
 
 return (
-    <>
-      <h3 className="p-5 display-inline-block" 
-        style={{ borderBottom: '1px dotted #1a1a1a' }}
-        >Comments</h3>
+    // <div>
+    //   {comments &&
+    //     comments.map((comment) => (
+    //       <div key={comment._id} className="card mb-3">
+    //         <p className="card-header">
+    //           <span>{comment.commentAuthor} commented on {comment.createdAt}</span>
+    //           reviewed this album on {comment.createdAt}
+    //         </p>
+    //         <div className="card-body">
+    //           <p>{comment.commentText}</p>
+    //         </div>
 
-        <div className="flex-row my-4">
-            {comments &&
-            comments.map((comment) => (
-            <div key={comment.id} className="col-12 mb-3 pb-3">
-              <div className="p-3 bg-dark text-light">
-                <h5 className="card-header">
-                  {comment.commentAuthor} commented{' '}
-                  <span style={{ fontSize: '0.825rem' }}>
-                    on {comment.createdAt}
-                  </span>
-                </h5>
-                <p className="card-body">{comment.commentText}</p>
-              </div>
-            </div>
-          ))}
-      </div>
-      </>
+    //         {Auth.loggedIn() && (
+    //           <button
+    //             className="btn btn-primary btn-block btn-s"
+    //             onClick={() => handleRemoveComment(comment.id)}>
+    //             Delete this comment
+    //           </button>
+    //         )}
+    //       </div>
+    //     ))}
+    // </div>
   );
 };
 

@@ -19,6 +19,7 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     saveAlbum(albumData: AlbumInput!): User
     removeAlbum(albumId: String!): User
+    
 }
 
 input AlbumInput{
@@ -38,6 +39,7 @@ type Album {
     url: String
     image: String
 }
+
 
 type Auth {
     token: ID!

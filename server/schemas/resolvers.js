@@ -22,7 +22,12 @@ const resolvers = {
         }
         throw new AuthenticationError('You need to be logged in!');
       },
+      // singleAlbum: async (parent, { albumId }) => {
+      //   return singleAlbum.findOne({ albumId: albumId });
+      // },
   },
+      
+
   
     Mutation: {
       addUser: async (parent, { username, email, password }) => {

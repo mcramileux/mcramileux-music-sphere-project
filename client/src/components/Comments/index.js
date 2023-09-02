@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 // import CommentList from '../components/CommentList';
 // import { QUERY_COMMENTS } from '../utils/queries';
 
-const Comments= ({albumId}) => {
+const Comments = ({ albumId }) => {
   // const { loading, data } = useQuery(QUERY_COMMENTS, {
   //   variables: {albumId: albumId}
   // });
@@ -17,7 +17,7 @@ const Comments= ({albumId}) => {
           {/* {loading ? (
             <div>LOADING REVIEWS...</div>
           ) : ( */}
-            {/* <CommentList
+          {/* <CommentList
               // comments={comments}
               albumId={albumId}
               title="Music Album Reviews"
