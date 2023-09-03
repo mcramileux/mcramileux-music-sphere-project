@@ -26,8 +26,6 @@ const resolvers = {
       //   return singleAlbum.findOne({ albumId: albumId });
       // },
   },
-      
-
   
     Mutation: {
       addUser: async (parent, { username, email, password }) => {

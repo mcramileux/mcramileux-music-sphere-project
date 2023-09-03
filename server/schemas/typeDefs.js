@@ -40,6 +40,13 @@ type Album {
     image: String
 }
 
+type Comment {
+    id: ID
+    albumId: String!
+    commentText: String!
+    commentAuthor: String!
+    createdAt: String
+}
 
 type Auth {
     token: ID!

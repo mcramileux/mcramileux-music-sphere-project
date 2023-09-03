@@ -1,61 +1,61 @@
-// ADDING THIS AGAIN FOR THE CRITERIA
-import React from 'react';
-// import { Container, Card, Button, ButtonGroup, Row } from 'react-bootstrap';
-// import Auth from '../utils/auth';
-// import { Link } from 'react-router-dom';
+// import React, { useState, useEffect } from 'react';
 
-// import { useQuery, useMutation } from '@apollo/client';
-// import { QUERY_COMMENTS } from '../utils/queries';
-// import { REMOVE_COMMENT } from '../utils/mutations';
+import { QUERY_COMMENTS } from '../utils/queries';
+import { useQuery } from '@apollo/client'; // took out useMutation
 
-const CommentList = ({ comments = [] }) => {
-    // const { albumId } = useParams();
-    // const { data } = useQuery(QUERY_COMMENTS);
-    // // let userData = data?.me || {};
+const CommentList = ({ albumId }) => {
+  // const { loading, error, data } = useQuery(QUERY_COMMENTS);
+  // let comments = data?.me || {};
 
-    // const [removeComment, { error }] = useMutation(REMOVE_COMMENT, {
-    //     update(cache, [ QUERY_COMMENTS ]});
-    // if (!comments.length) {
-    // return <h3>No Comments Yet</h3>;
+  //setAlbumComments(comments);
+
+  // if (!comments.length) {
+  //   return <h3>No Comments Yet</h3>;
+  // }
+  const { loading, error, data } = useQuery(QUERY_COMMENTS, {
+    variables: { albumId }, // Pass albumId as a variable to the query
+  });
+
+  if (loading) {
+    return <h3>Loading comments...</h3>;
   }
 
-//     const handleRemoveComment = async (commentId) => {
-//     console.log(commentId);
+  if (error) {
+    console.error(error);
+    return <h3>Error loading comments</h3>;
+  }
 
-//     try {
-//         const { data } = await removeComment({
-//             variables: { commentId }
-//         });
-//     // userData = data;
-//     // removeComment(commentId);
-//     } catch (err) {
-//         console.error(err);
-//     }
-// };
+  const comments = data?.comments || [];
 
-return (
-    // <div>
-    //   {comments &&
-    //     comments.map((comment) => (
-    //       <div key={comment._id} className="card mb-3">
-    //         <p className="card-header">
-    //           <span>{comment.commentAuthor} commented on {comment.createdAt}</span>
-    //           reviewed this album on {comment.createdAt}
-    //         </p>
-    //         <div className="card-body">
-    //           <p>{comment.commentText}</p>
-    //         </div>
-
-    //         {Auth.loggedIn() && (
-    //           <button
-    //             className="btn btn-primary btn-block btn-s"
-    //             onClick={() => handleRemoveComment(comment.id)}>
-    //             Delete this comment
-    //           </button>
-    //         )}
-    //       </div>
-    //     ))}
-    // </div>
+  if (comments.length === 0) {
+    return <h3>No Comments Yet</h3>;
+  }
+  
+  return (
+    <>
+      <h3
+        className="p-5 display-inline-block"
+        style={{ borderBottom: '1px dotted #1a1a1a' }}
+      >
+        Comments
+      </h3>
+      <div className="flex-row my-4">
+        {comments &&
+          comments.map((comment) => (
+            <div key={comment.id} className="col-12 mb-3 pb-3">
+              <div className="p-3 bg-dark text-light">
+                <h5 className="card-header">
+                  {comment.commentAuthor} commented{' '}
+                  <span style={{ fontSize: '0.825rem' }}>
+                    on {comment.createdAt}
+                  </span>
+                </h5>
+                <p className="card-body">{comment.commentText}</p>
+              </div>
+            </div>
+          ))}
+      </div>
+    </>
   );
 };
 

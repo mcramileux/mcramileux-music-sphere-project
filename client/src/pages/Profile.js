@@ -1,27 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Auth from '../utils/auth';
-import { Container, Card, Button, ButtonGroup, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container, Card, Button, ButtonGroup, Modal, Row } from 'react-bootstrap';
 import { BsFillPlayCircleFill, BsFillTrash3Fill } from "react-icons/bs";
 import { FaCommentAlt } from "react-icons/fa";
 
-import { GET_ME } from '../utils/queries';
 import { REMOVE_ALBUM } from '../utils/mutations';
-
+import { GET_ME } from '../utils/queries';
 import { removeAlbumId } from '../utils/localStorage';
 import { useQuery, useMutation } from '@apollo/client';
 
+import CommentForm from '../components/CommentForm';
+import CommentList from '../components/Comments';
+
 const Profile = () => {
+  const [show, setShow] = useState(false);
+  const [currentAlbumId, setCurrentAlbumId] = useState('');
+
+  const handleClose = () => setShow(false);
+  const handleShow = (albumId) => {
+    setShow(true);
+    setCurrentAlbumId(albumId);
+  };
+
   const { loading, data } = useQuery(GET_ME);
   let userData = data?.me || {};
   const [removeAlbum] = useMutation(REMOVE_ALBUM);
 
   console.log(userData);
 
-
   const playAudio = (url) => {
     window.open(url);
   }
+
 
   // function that accepts the album's mongo _id value as param and deletes the album from the database
   const handleDeleteAlbum = async (albumId) => {
@@ -74,8 +84,9 @@ const Profile = () => {
                     <Button onClick={() => playAudio(album.url)}>
                       <BsFillPlayCircleFill />
                     </Button>
-                    <Link className='btn btn-primary' to={`/single-album/${album.albumId}`}>
-                      <FaCommentAlt /></Link>
+                    <Button onClick={() => handleShow(album.albumId)}>
+                      <FaCommentAlt />
+                    </Button>
                     <Button onClick={() => handleDeleteAlbum(album.albumId)}>
                       <BsFillTrash3Fill />
                     </Button>
@@ -86,6 +97,34 @@ const Profile = () => {
           })}
         </Row>
       </Container>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Comment</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {show ? (
+            <>
+              <div className="my-5">
+                <CommentForm albumId={currentAlbumId} />
+              </div>
+              <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
+                <CommentList albumId={currentAlbumId} />
+              </div>
+            </>
+          ) : (
+            <div>
+            </div>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 };

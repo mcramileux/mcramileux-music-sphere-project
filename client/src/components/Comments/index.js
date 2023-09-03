@@ -1,6 +1,6 @@
 // ADDING THIS AGAIN FOR THE CRITERIA
 import React from 'react';
-import { useQuery } from '@apollo/client';
+// import { useQuery } from '@apollo/client';
 // import CommentList from '../components/CommentList';
 // import { QUERY_COMMENTS } from '../utils/queries';
 
@@ -12,8 +12,8 @@ const Comments = ({ albumId }) => {
 
   return (
     <main>
-      <div className="flex-row justify-center">
-        <div className="col-12 mb-3">
+      {/* <div className="flex-row justify-center">
+        <div className="col-12 mb-3"> */}
           {/* {loading ? (
             <div>LOADING REVIEWS...</div>
           ) : ( */}
@@ -23,8 +23,8 @@ const Comments = ({ albumId }) => {
               title="Music Album Reviews"
             /> */}
           {/* )} */}
-        </div>
-      </div>
+        {/* </div> */}
+     {/* </div> */}
     </main>
   );
 };
