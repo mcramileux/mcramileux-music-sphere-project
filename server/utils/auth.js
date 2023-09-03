@@ -1,4 +1,3 @@
-// Do not touch nor change - all good!
 const jwt = require('jsonwebtoken');
 
 // set token secret and expiration date

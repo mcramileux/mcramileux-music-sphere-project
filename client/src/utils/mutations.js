@@ -63,7 +63,7 @@ export const REMOVE_ALBUM = gql`
 `;
 
 export const ADD_COMMENT = gql`
-mutation AddComment($commentText: String!, $commentAuthor: String!, $albumId: String) {
+mutation addComment($commentText: String!, $commentAuthor: String!, $albumId: String) {
   addComment(commentText: $commentText, commentAuthor: $commentAuthor, albumId: $albumId) {
     id
     albumId

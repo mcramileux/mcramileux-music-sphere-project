@@ -1,4 +1,3 @@
-// all good - but will test it out with the front end
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`

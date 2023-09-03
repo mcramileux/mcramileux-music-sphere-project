@@ -1,4 +1,3 @@
-// ADDING THIS AGAIN FOR THE CRITERIA
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
@@ -23,7 +22,7 @@ const handleFormSubmit = async (event) => {
     try {
       const { data } = await addComment({
         variables: {
-          albumId,
+          albumId: "71AMctbW5dWVckM3mbu2dk",
           commentText,
           commentAuthor: Auth.getProfile()?.data?.username,
         },

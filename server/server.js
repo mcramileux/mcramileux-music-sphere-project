@@ -1,4 +1,3 @@
-// Do not touch nor change - all good!
 const express = require('express');
 const path = require('path');
 

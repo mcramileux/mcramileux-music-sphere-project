@@ -99,7 +99,8 @@ THEN I am logged out of the site and presented with a menu with the options Sear
 
 ## Links
 - [Github Repository](https://github.com/mcramileux/mcramileux-music-sphere-project)
-- [Heroku Deployment](https://music-sphere-twopointoh-164899043ee9.herokuapp.com/)
+- [Heroku Deployment 1.0](https://music-sphere-twopointoh-164899043ee9.herokuapp.com/) 
+- [Heroku Deployment 2.0 Latest Edition](https://murmuring-citadel-11039-68231712215f.herokuapp.com/)
 
 
 ## References

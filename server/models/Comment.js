@@ -1,4 +1,3 @@
-// will be used in the future
 // const mongoose = require('mongoose');
 // const { Schema } = mongoose ;
 

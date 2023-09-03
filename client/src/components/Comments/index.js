@@ -1,4 +1,3 @@
-// ADDING THIS AGAIN FOR THE CRITERIA
 import React from 'react';
 // import { useQuery } from '@apollo/client';
 // import CommentList from '../components/CommentList';
