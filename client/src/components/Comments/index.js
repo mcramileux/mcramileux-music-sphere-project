@@ -12,6 +12,7 @@ const Comments = ({ albumId }) => {
 
   return (
     <main>
+      alert("I AM A COMMENT");
       {/* <div className="flex-row justify-center">
         <div className="col-12 mb-3"> */}
           {/* {loading ? (
