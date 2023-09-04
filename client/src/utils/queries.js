@@ -85,7 +85,7 @@ export const GET_ME = gql`
   // `;
 
 export const QUERY_COMMENTS = gql`
-  query Comments($albumId: String) {
+  query Comments($albumId: String!) {
     comments(albumId: $albumId) {
       id
       albumId
@@ -95,15 +95,3 @@ export const QUERY_COMMENTS = gql`
     }
   }
 `;
-
-// export const QUERY_COMMENT = gql`
-// query Comment($albumId: String) {
-//   comment(albumId: $albumId) {
-//       id
-//       albumId
-//       commentText
-//       commentAuthor
-//       createdAt
-//     }
-//   }
-// `;

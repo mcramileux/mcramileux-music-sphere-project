@@ -21,6 +21,11 @@ const resolvers = {
         }
         throw new AuthenticationError('You need to be logged in!');
       },
+      // comments: async (parent, {albumId}) => {
+      //   const params = {};
+  
+      //   return await Comment.find(albumId).populate('comments');
+      // },
       // singleAlbum: async (parent, { albumId }) => {
       //   return singleAlbum.findOne({ albumId: albumId });
       // },

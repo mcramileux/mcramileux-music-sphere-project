@@ -3,21 +3,30 @@
 
 // const commentSchema = new mongoose.Schema(
 //   {
+//     albumId: {
+//         type: String,
+//         required: true,
+//     },
 //     commentText: {
 //       type: String,
 //       required: true,
 //       minlength: 5,
 //     },
-//     userId: {
-//       type: Schema.Types.ObjectId,
-//       ref: 'User',
-//       required: true,
+//     commentAuthor: {
+//         type: String,
+//         required: true, 
 //     },
-//     albumId: {
-//       type: Schema.Types.ObjectId,
-//       ref: 'Album',
-//       required: true,
+//     createdAt: {
+//         type: Date,
+//         default: Date.now,
+//         get: (timestamp) => dateFormat(timestamp),
 //     },
+//     // userId: {
+//     //   type: Schema.Types.ObjectId,
+//     //   ref: 'User',
+//     //   required: true,
+//     // },
+    
 //   },
 // );
 
